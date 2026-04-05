@@ -1,1 +1,139 @@
 <a href="roster.html">Station Roster</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station Roster | Internal Portal</title>
+    <style>
+        :root {
+            --fenz-red: #d42027;
+            --fenz-yellow: #ffed00;
+            --dark-bg: #1a1a1a;
+            --row-bg: #2a2a2a;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px;
+            background-color: var(--dark-bg);
+            color: white;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .header {
+            border-left: 10px solid var(--fenz-red);
+            padding-left: 20px;
+            margin-bottom: 50px;
+        }
+
+        h1 { text-transform: uppercase; font-size: 3rem; margin: 0; }
+        .back-btn { color: var(--fenz-yellow); text-decoration: none; font-weight: bold; }
+
+        /* --- ROSTER TABLE --- */
+        .roster-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .rank-group {
+            background: var(--row-bg);
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-right: 5px solid transparent;
+            transition: 0.3s;
+        }
+
+        /* Color coding by authority */
+        .rank-group.management { border-right-color: var(--fenz-yellow); }
+        .rank-group.officer { border-right-color: var(--fenz-red); }
+        .rank-group.firefighter { border-right-color: #888; }
+
+        .rank-name {
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .personnel-name {
+            color: #bbb;
+            font-style: italic;
+        }
+
+        .status-badge {
+            background: #444;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-btn">← BACK TO DASHBOARD</a>
+    
+    <div class="header">
+        <h1>Station Roster</h1>
+        <p>Operational Strength - Auckland Central</p>
+    </div>
+
+    <div class="roster-container">
+        
+        <div class="rank-group management">
+            <div class="rank-name">District Manager</div>
+            <div class="personnel-name">VACANT</div>
+            <div class="status-badge">Off Duty</div>
+        </div>
+
+        <div class="rank-group management">
+            <div class="rank-name">Group Manager</div>
+            <div class="personnel-name">VACANT</div>
+            <div class="status-badge">Off Duty</div>
+        </div>
+
+        <div class="rank-group officer">
+            <div class="rank-name">Senior Station Officer</div>
+            <div class="personnel-name">Awaiting Assignment</div>
+            <div class="status-badge">On Call</div>
+        </div>
+
+        <div class="rank-group officer">
+            <div class="rank-name">Provisional Senior Station Officer</div>
+            <div class="personnel-name">Awaiting Assignment</div>
+            <div class="status-badge">Active</div>
+        </div>
+
+        <div class="rank-group officer">
+            <div class="rank-name">Station Officer</div>
+            <div class="personnel-name">Awaiting Assignment</div>
+            <div class="status-badge">Active</div>
+        </div>
+
+        <div class="rank-group officer">
+            <div class="rank-name">Provisional Station Officer</div>
+            <div class="personnel-name">Awaiting Assignment</div>
+            <div class="status-badge">Active</div>
+        </div>
+
+        <div class="rank-group firefighter">
+            <div class="rank-name">Senior Firefighter</div>
+            <div class="personnel-name">Awaiting Assignment</div>
+            <div class="status-badge">Active</div>
+        </div>
+
+        <div class="rank-group firefighter">
+            <div class="rank-name">Qualified Firefighter</div>
+            <div class="personnel-name">Awaiting Assignment</div>
+            <div class="status-badge">Active</div>
+        </div>
+
+    </div>
+
+</body>
+</html>
