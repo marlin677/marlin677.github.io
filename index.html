@@ -12,15 +12,19 @@
         }
 
         * { box-sizing: border-box; }
-        body, html { margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, sans-serif; scroll-behavior: smooth; }
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            scroll-behavior: smooth;
+            background-color: #1a1a1a; /* Fix: Keeps the page dark even if image fails */
+        }
 
-        /* --- HEADER & LOGO AREA --- */
+        /* --- HEADER --- */
         .header-main {
-            position: fixed;
+            position: absolute;
             top: 0;
             width: 100%;
-            height: 100px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
             z-index: 100;
             display: flex;
             justify-content: space-between;
@@ -31,31 +35,32 @@
             background-color: var(--fenz-red);
             border-bottom: 5px solid var(--fenz-yellow);
             width: 180px;
-            height: 80px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
-            text-align: center;
-            /* Placeholder for your image */
+            font-style: italic;
         }
 
         /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1516533075015-a3838414c3ca?auto=format&fit=crop&q=80&w=2070');
+            /* Added a solid dark color as a backup for the image */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        #222 url('https://images.unsplash.com/photo-1516533075015-a3838414c3ca?auto=format&fit=crop&q=80&w=2070');
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             padding: 0 10%;
+            border-bottom: 10px solid var(--fenz-red);
         }
 
-        .hero-content { color: white; width: 100%; display: flex; justify-content: space-between; }
+        .hero-content { color: white; width: 100%; display: flex; justify-content: space-between; align-items: center; }
         
-        .hero-text h1 { font-size: 4rem; margin: 0; font-weight: 900; line-height: 1; }
+        .hero-text h1 { font-size: 4.5rem; margin: 0; font-weight: 900; line-height: 0.9; text-transform: uppercase; }
         
         .btn-skew {
             background: var(--fenz-yellow);
@@ -66,24 +71,27 @@
             display: inline-block;
             margin-top: 30px;
             transform: skewX(-15deg);
+            text-transform: uppercase;
         }
         .btn-skew span { display: inline-block; transform: skewX(15deg); }
 
-        /* --- QUICK LINKS MENU --- */
+        /* --- MENU --- */
+        .quick-links { text-align: right; }
+        .quick-links h3 { font-size: 0.8rem; color: var(--fenz-yellow); text-transform: uppercase; letter-spacing: 2px; }
         .quick-links a {
             display: block;
             color: white;
             text-decoration: none;
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: bold;
-            margin-bottom: 15px;
-            transition: 0.3s;
+            margin-bottom: 10px;
+            transition: 0.2s;
         }
-        .quick-links a:hover { color: var(--fenz-yellow); padding-left: 10px; }
+        .quick-links a:hover { color: var(--fenz-yellow); transform: translateX(-10px); }
 
-        /* --- SMOKE ALARM SECTION --- */
+        /* --- SMOKE ALARMS SECTION --- */
         .safety-page {
-            background-color: #fff;
+            background-color: #ffffff;
             padding: 100px 10%;
             text-align: center;
         }
@@ -92,55 +100,7 @@
             background-color: var(--fenz-red);
             color: white;
             padding: 60px;
-            border-radius: 5px;
+            border-radius: 2px;
         }
 
-        .smoke-alarm-banner h2 { font-size: 3rem; text-transform: uppercase; margin: 0; }
-        .smoke-alarm-banner p { font-size: 1.2rem; margin-top: 20px; }
-
-    </style>
-</head>
-<body>
-
-    <header class="header-main">
-        <div class="logo-box">
-            DEPT LOGO HERE
-        </div>
-
-        <div style="color: white; text-align: right;">
-            IN EMERGENCIES<br>
-            <span style="font-size: 1.8rem; font-weight: 900;">CALL 111</span>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>LIVES<br>DEPEND ON IT.</h1>
-                <a href="#safety" class="btn-skew"><span>Safety Advice</span></a>
-            </div>
-
-            <div class="quick-links">
-                <a href="#safety">Smoke Alarms</a>
-                <a href="#">Incidents</a>
-                <a href="#">Key Documents</a>
-                <a href="#">Fleet</a>
-                <a href="#">Contact</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="safety" class="safety-page">
-        <div class="smoke-alarm-banner">
-            <h2>Smoke Alarms Save Lives</h2>
-            <p>Ensure you have working smoke alarms in every bedroom, hallway, and living area.<br>
-            Press the button to test them every month.</p>
-        </div>
-        <div style="margin-top: 40px; color: #333; line-height: 1.6;">
-            <h3>Did you know?</h3>
-            <p>You can't smell smoke when you're asleep. A working smoke alarm is your only voice when you're dreaming.</p>
-        </div>
-    </section>
-
-</body>
-</html>
+        .smoke-alarm-banner h2 { font-size: 3
