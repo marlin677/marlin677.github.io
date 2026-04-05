@@ -125,4 +125,120 @@
             padding-left: 50px;
         }
 
-        /* --- QUICK LINKS MENU
+        /* --- QUICK LINKS MENU --- */
+        .quick-links {
+            text-align: right;
+        }
+
+        .menu-title {
+            color: var(--fenz-yellow);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .quick-links a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 800;
+            margin-bottom: 10px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .quick-links a:hover {
+            color: var(--fenz-yellow);
+            transform: translateX(-15px);
+        }
+
+        /* --- SMOKE ALARMS SECTION --- */
+        .safety-section {
+            background-color: white;
+            color: #1a1a1a;
+            padding: 120px 10%;
+            text-align: center;
+        }
+
+        .alarm-banner {
+            background-color: var(--fenz-red);
+            color: white;
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto 50px;
+            border-radius: 4px;
+        }
+
+        .alarm-banner h2 {
+            font-size: 3.5rem;
+            margin: 0;
+            text-transform: uppercase;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .alarm-banner p {
+            font-size: 1.3rem;
+            margin-top: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .safety-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.25rem;
+            line-height: 1.6;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="header-main">
+        <div class="logo-box">
+            <img src="FIRE%20AND%20EMERGENCY%20LOGO%201.png" alt="FENZ Logo">
+        </div>
+
+        <div class="emergency-contact">
+            <div class="emergency-label">IN EMERGENCIES</div>
+            <div class="emergency-number">CALL 111</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>LIVES<br>DEPEND<br>ON IT.</h1>
+                <a href="#safety" class="btn-safety">
+                    <span>Safety Advice</span>
+                </a>
+            </div>
+
+            <nav class="quick-links">
+                <div class="menu-title">Quick Links</div>
+                <a href="#safety">Smoke Alarms</a>
+                <a href="#">Incidents</a>
+                <a href="#">Key Documents</a>
+                <a href="#">Fleet</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </section>
+
+    <section id="safety" class="safety-section">
+        <div class="alarm-banner">
+            <h2>Smoke Alarms Save Lives</h2>
+            <p>IT'S THE ONLY WAY TO WAKE UP TO FIRE.</p>
+        </div>
+        
+        <div class="safety-content">
+            <p>You can't smell smoke when you're asleep. Working smoke alarms are your only voice when you're dreaming. Ensure you have working alarms in every bedroom, hallway, and living area. <strong>Test them every month.</strong></p>
+        </div>
+    </section>
+
+</body>
+</html>
