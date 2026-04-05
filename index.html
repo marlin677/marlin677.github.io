@@ -49,7 +49,7 @@
             height: 100vh;
             /* Added a solid dark color as a backup for the image */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        #222 url('https://www.fireandemergency.nz/assets/Uploads/FENZ-House_Burn_Levin-Hass_0084.jpg');
+                        #222 url('https://images.unsplash.com/photo-1516533075015-a3838414c3ca?auto=format&fit=crop&q=80&w=2070');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -103,4 +103,51 @@
             border-radius: 2px;
         }
 
-        .smoke-alarm-banner h2 { font-size: 3
+        .smoke-alarm-banner h2 { font-size: 3.5rem; text-transform: uppercase; margin: 0; font-weight: 900; }
+        .smoke-alarm-banner p { font-size: 1.4rem; margin-top: 20px; font-weight: bold; }
+
+    </style>
+</head>
+<body>
+
+    <header class="header-main">
+        <div class="logo-box">
+            DEPT LOGO HERE
+        </div>
+
+        <div style="color: white; text-align: right; font-weight: bold;">
+            IN EMERGENCIES<br>
+            <span style="font-size: 2rem; color: var(--fenz-yellow);">CALL 111</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>LIVES<br>DEPEND<br>ON IT.</h1>
+                <a href="#safety" class="btn-skew"><span>Safety Advice</span></a>
+            </div>
+
+            <div class="quick-links">
+                <h3>Quick Links</h3>
+                <a href="#safety">Smoke Alarms</a>
+                <a href="#">Incidents</a>
+                <a href="#">Key Documents</a>
+                <a href="#">Fleet</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="safety" class="safety-page">
+        <div class="smoke-alarm-banner">
+            <h2>Smoke Alarms Save Lives</h2>
+            <p>WORKING SMOKE ALARMS ARE THE ONLY WAY TO WAKE UP TO FIRE.</p>
+        </div>
+        <div style="margin-top: 50px; color: #1a1a1a; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <p style="font-size: 1.2rem; line-height: 1.6;">You can't smell smoke when you're asleep. Ensure you have working smoke alarms in every bedroom, hallway, and living area. Test them every month.</p>
+        </div>
+    </section>
+
+</body>
+</html>
