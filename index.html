@@ -1,55 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Station Portal | RP Department</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Portal</title>
     <style>
-        body {
-            background-color: #111;
-            color: white;
-            font-family: 'Arial', sans-serif;
-            text-align: center;
+        :root {
+            --fenz-red: #d42027;
+            --fenz-yellow: #ffed00;
+            --dark-overlay: rgba(0, 0, 0, 0.4);
+        }
+
+        body, html {
             margin: 0;
             padding: 0;
+            height: 100%;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f4f4f4;
         }
-        header {
-            background-color: #c0392b; /* Change to blue for Police, red for Fire */
-            padding: 40px;
-            border-bottom: 5px solid #8e44ad; /* Accent color */
+
+        /* Hero Background Image */
+        .hero {
+            position: relative;
+            height: 85vh; /* Adjusted to leave room for content below */
+            background-image: url('https://images.unsplash.com/photo-1516533075015-a3838414c3ca?auto=format&fit=crop&q=80&w=2070'); /* Replace this with a screenshot of your station/trucks */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
         }
-        .container {
-            padding: 50px;
+
+        /* Dark overlay to make text pop */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--dark-overlay);
         }
-        .btn {
-            display: inline-block;
-            background: #444;
+
+        /* Top Header Area */
+        .header-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 10;
+        }
+
+        .logo-placeholder {
+            background-color: var(--fenz-red);
+            padding: 10px 20px;
             color: white;
-            padding: 15px 25px;
-            margin: 10px;
-            text-decoration: none;
-            border-radius: 5px;
             font-weight: bold;
+            font-style: italic;
+            border-bottom: 4px solid var(--fenz-yellow);
         }
-        .btn:hover { background: #666; }
+
+        /* Main Content within Hero */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding-left: 10%;
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .hero-text h2 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0 0 20px 0;
+            line-height: 1.1;
+        }
+
+        /* Yellow Action Button */
+        .btn-yellow {
+            background-color: var(--fenz-yellow);
+            color: black;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-block;
+            transform: skewX(-15deg); /* That iconic FENZ slant */
+        }
+        .btn-yellow span {
+            display: inline-block;
+            transform: skewX(15deg);
+        }
+
+        /* Sidebar Quick Links */
+        .quick-links {
+            text-align: left;
+            margin-top: 50px;
+        }
+
+        .quick-links h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .quick-links a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 2px solid transparent;
+            width: fit-content;
+        }
+
+        .quick-links a:hover {
+            border-bottom: 2px solid var(--fenz-yellow);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content { flex-direction: column; }
+            .hero-text h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>DEPARTMENT NAME</h1>
-        <p>Official Information & Resources</p>
-    </header>
-
-    <div class="container">
-        <h2>Department Resources</h2>
-        <a href="#" class="btn">Roster</a>
-        <a href="#" class="btn">SOPs/Codes</a>
-        <a href="#" class="btn">Recruitment</a>
+    <div class="header-top">
+        <div class="logo-placeholder">
+            DEPT LOGO HERE
+        </div>
         
-        <hr style="margin: 40px; border: 0; border-top: 1px solid #333;">
-        
-        <h3>About Us</h3>
-        <p>Provide a brief overview of your department operations here.</p>
-    </div>
-
-</body>
-</html>
+        <div style="color: white; font-weight: bold; text
