@@ -10,6 +10,7 @@
             --fenz-yellow: #ffed00;
             --dark-bg: #1a1a1a;
             --slate-bg: #111a2e;
+            --discord-blurple: #5865F2;
         }
 
         * { box-sizing: border-box; }
@@ -119,8 +120,25 @@
             cursor: pointer;
         }
 
-        .btn-safety:hover {
+        /* DISCORD BUTTON STYLE */
+        .btn-discord {
+            display: inline-block;
+            margin-top: 30px;
+            margin-left: 15px;
+            background-color: var(--discord-blurple);
+            color: white;
+            padding: 15px 25px;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: 0.2s;
+            font-size: 1rem;
+            border-radius: 4px;
+        }
+
+        .btn-safety:hover, .btn-discord:hover {
             background-color: white;
+            color: black;
             transform: scale(1.05);
         }
 
@@ -157,7 +175,7 @@
             border-left: 4px solid var(--fenz-yellow);
         }
 
-        /* --- NEW SCROLL SECTION: FACTS --- */
+        /* --- FACTS SECTION --- */
         .facts-section {
             background-color: var(--slate-bg);
             padding: 80px 4%;
@@ -214,7 +232,13 @@
             <div class="hero-text">
                 <p style="color: var(--fenz-yellow); font-weight: bold; text-transform: uppercase; margin-bottom: 10px;">Internal Portal</p>
                 <h1>LIVES<br>DEPEND<br>ON IT.</h1>
+                
                 <a href="#safety-facts" class="btn-safety">Smoke Alarms Save Lives</a>
+                
+                <a href="YOUR_DISCORD_OAUTH_URL_HERE" class="btn-discord">
+                    <img src="https://cdn.prod.website-files.com/6257adef93867e3d8405e367/6257adef93867e059105e612_9850_Discord_Logo_White.png" width="20" style="margin-right: 10px; vertical-align: middle;">
+                    Login via Discord
+                </a>
             </div>
 
             <nav class="quick-links">
@@ -222,7 +246,9 @@
                 <a href="leadership.html">District Leadership</a>
                 <a href="#">Ranks</a>
                 <a href="roster.html">Station Roster</a>
-                <a href="#">My Profile</a>
+                
+                <a href="commander-login.html" style="color: var(--fenz-yellow);">Leadership Login</a>
+                
                 <a href="#">Fleet status</a>
                 <a href="#">Contact Admin</a>
             </nav>
@@ -251,6 +277,30 @@
             </div>
         </div>
     </section>
+
+    <script>
+        window.onload = () => {
+            const fragment = new URLSearchParams(window.location.hash.slice(1));
+            const accessToken = fragment.get('access_token');
+
+            if (accessToken) {
+                fetch('https://discord.com/api/users/@me', {
+                    headers: {
+                        authorization: `Bearer ${accessToken}`,
+                    },
+                })
+                .then(result => result.json())
+                .then(response => {
+                    const { username } = response;
+                    if(username) {
+                        document.querySelector('h1').innerHTML = `WELCOME,<br>${username.toUpperCase()}`;
+                        document.querySelector('.btn-discord').style.display = 'none';
+                    }
+                })
+                .catch(console.error);
+            }
+        };
+    </script>
 
 </body>
 </html>
