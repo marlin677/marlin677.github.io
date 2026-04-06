@@ -1,211 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Department Portal | FENZ Style</title>
-    <style>
-        :root {
-            --fenz-red: #d42027;
-            --fenz-yellow: #ffed00;
-            --dark-bg: #05080f; /* Darker background from your screenshot */
-            --card-bg: #0f172a;
-            --discord-blurple: #5865F2;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Portal | FENZ Style</title>
+    <style>
+        :root {
+            --fenz-red: #d42027;
+            --fenz-yellow: #ffed00;
+            --dark-bg: #1a1a1a;
+            --slate-bg: #111a2e;
+            --discord-blurple: #5865F2;
+        }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            background-color: var(--dark-bg);
-            color: white;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            scroll-behavior: smooth;
-        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            color: white;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
 
-        /* --- HEADER --- */
-        .header-main {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 4%;
-            z-index: 100;
-        }
+        /* --- HEADER & LOGO --- */
+        .header-main {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px 4%;
+            z-index: 100;
+        }
 
-        .logo-box img {
-            width: 300px;
-            filter: drop-shadow(2px 2px 10px rgba(0,0,0,0.5));
-        }
+        .logo-box {
+            width: 350px; 
+            display: flex;
+            align-items: center;
+        }
 
-        .emergency-number {
-            font-size: 2rem;
-            color: var(--fenz-yellow);
-            font-weight: 900;
-            text-align: right;
-        }
+        .logo-box img {
+            width: 100%; 
+            height: auto;
+            filter: drop-shadow(2px 2px 10px rgba(0,0,0,0.5));
+        }
 
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /* Placeholder background if the FENZ one fails */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://www.fireandemergency.nz/assets/Uploads/FENZ-House_Burn_Levin-Hass_0084.jpg') center/cover;
-        }
+        .emergency-contact {
+            text-align: right;
+            line-height: 1.1;
+            padding-top: 10px;
+        }
 
-        .hero-container {
-            width: 90%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .emergency-label {
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: white;
+            text-transform: uppercase;
+        }
 
-        .hero-text h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            line-height: 0.9;
-            margin: 0;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
+        .emergency-number {
+            font-size: 2.2rem;
+            color: var(--fenz-yellow);
+            font-weight: 900;
+        }
 
-        .btn-discord {
-            display: inline-block;
-            margin-top: 20px;
-            background-color: var(--discord-blurple);
-            color: white;
-            padding: 15px 25px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 4px;
-        }
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://www.fireandemergency.nz/assets/Uploads/FENZ-House_Burn_Levin-Hass_0084.jpg');
+            background-size: cover;
+            background-position: center;
+        }
 
-        /* --- MENU --- */
-        .quick-links {
-            border-left: 3px solid var(--fenz-red);
-            padding-left: 25px;
-        }
+        .hero-container {
+            width: 92%;
+            max-width: 1600px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 50px;
+        }
 
-        .quick-links a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
+        .hero-text {
+            max-width: 600px;
+        }
 
-        .quick-links a:hover { color: var(--fenz-yellow); }
+        .hero-text h1 {
+            font-size: clamp(3.5rem, 9vw, 6rem);
+            line-height: 0.9;
+            margin: 0;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
 
-        /* --- COMMAND OPERATIONS (From your screenshots) --- */
-        .command-section {
-            padding: 60px 4%;
-            background: #05080f;
-            border-top: 2px solid #1e293b;
-        }
+        .btn-safety {
+            display: inline-block;
+            margin-top: 30px;
+            background-color: var(--fenz-yellow);
+            color: black;
+            padding: 15px 35px;
+            font-weight: 900;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: 0.2s;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+        }
 
-        .command-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+        .btn-discord {
+            display: inline-block;
+            margin-top: 30px;
+            margin-left: 15px;
+            background-color: var(--discord-blurple);
+            color: white;
+            padding: 15px 25px;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: 0.2s;
+            font-size: 1rem;
+            border-radius: 4px;
+        }
 
-        .command-card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-top: 3px solid var(--fenz-red);
-            border-radius: 4px;
-        }
+        .btn-safety:hover, .btn-discord:hover {
+            background-color: white;
+            color: black;
+            transform: scale(1.05);
+        }
 
-        .command-card h2 {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
+        /* --- MENU SECTION --- */
+        .quick-links {
+            text-align: left;
+            border-left: 3px solid var(--fenz-red);
+            padding-left: 30px;
+        }
 
-        .log-box {
-            background: #020617;
-            padding: 15px;
-            font-family: monospace;
-            color: #38bdf8;
-            height: 200px;
-            overflow-y: auto;
-        }
-    </style>
+        .menu-title {
+            color: var(--fenz-yellow);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .quick-links a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .quick-links a:hover {
+            color: var(--fenz-yellow);
+            padding-left: 15px;
+            border-left: 4px solid var(--fenz-yellow);
+        }
+
+        /* --- FACTS SECTION --- */
+        .facts-section {
+            background-color: var(--slate-bg);
+            padding: 80px 4%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .facts-container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .fact-card {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-top: 4px solid var(--fenz-red);
+        }
+
+        .fact-card h3 {
+            color: var(--fenz-yellow);
+            text-transform: uppercase;
+            margin-top: 0;
+        }
+
+        .fact-card p {
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+    </style>
 </head>
 <body>
 
-    <header class="header-main">
-        <div class="logo-box">
-            <img src="https://raw.githubusercontent.com/marlin677/marlin77.github.io/main/FIRE%20AND%20EMERGENCY%20LOGO%201.png" alt="FENZ">
-        </div>
-        <div class="emergency-number">CALL 111</div>
-    </header>
+    <header class="header-main">
+        <div class="logo-box">
+            <img src="https://raw.githubusercontent.com/marlin677/marlin77.github.io/main/FIRE%20AND%20EMERGENCY%20LOGO%201.png" alt="Fire and Emergency NZ">
+        </div>
 
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-text">
-                <p style="color: var(--fenz-yellow); font-weight: bold;">INTERNAL PORTAL</p>
-                <h1>LIVES<br>DEPEND<br>ON IT.</h1>
-                <a href="#" class="btn-discord">Login via Discord</a>
-            </div>
+        <div class="emergency-contact">
+            <div class="emergency-label">In Emergencies</div>
+            <div class="emergency-number">Call 111</div>
+        </div>
+    </header>
 
-            <nav class="quick-links">
-                <a href="#">Station Roster</a>
-                <a href="#command-ops" style="color: var(--fenz-yellow);">Command Operations</a>
-                <a href="#">Fleet Status</a>
-            </nav>
-        </div>
-    </section>
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <p id="user-welcome-label" style="color: var(--fenz-yellow); font-weight: bold; text-transform: uppercase; margin-bottom: 10px;">Internal Portal</p>
+                <h1 id="main-headline">LIVES<br>DEPEND<br>ON IT.</h1>
+                
+                <a href="#safety-facts" class="btn-safety">Smoke Alarms Save Lives</a>
+                
+                <a href="YOUR_DISCORD_OAUTH_URL_HERE" class="btn-discord" id="discord-auth-btn">
+                    <img src="https://cdn.prod.website-files.com/6257adef93867e3d8405e367/6257adef93867e059105e612_9850_Discord_Logo_White.png" width="20" style="margin-right: 10px; vertical-align: middle;">
+                    Login via Discord
+                </a>
+            </div>
 
-    <section id="command-ops" class="command-section">
-        <h2 style="margin-left: 5%; margin-bottom: 20px;">Command Operations</h2>
-        <div class="command-grid">
-            
-            <div class="command-card">
-                <h2>District Overview</h2>
-                <p>Active Stations: 1 (Auckland Central)</p>
-                <button style="background: #22c55e; color: white; border: none; padding: 10px;">Manage Personnel</button>
-            </div>
+            <nav class="quick-links">
+                <div class="menu-title">Main Menu</div>
+                <a href="leadership.html">District Leadership</a>
+                <a href="#">Ranks</a>
+                <a href="roster.html">Station Roster</a>
+                
+                <a href="commander-login.html" style="color: var(--fenz-yellow);">Leadership Login</a>
+                
+                <a href="#">Fleet status</a>
+                <a href="#">Contact Admin</a>
+            </nav>
+        </div>
+    </section>
 
-            <div class="command-card">
-                <h2>Fleet Management</h2>
-                <p>Status: <span style="color: #4ade80;">Operational</span></p>
-                <button style="background: #ef4444; color: white; border: none; padding: 10px;">Set Emergency Alert</button>
-            </div>
+    <section id="safety-facts" class="facts-section">
+        <div class="facts-container">
+            <h2 style="font-size: 2.5rem; text-transform: uppercase; border-left: 8px solid var(--fenz-red); padding-left: 20px;">Safety & District Facts</h2>
+            
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <h3>Smoke Alarm Tip</h3>
+                    <p>You need a working smoke alarm in every bedroom, living area, and hallway. Check your batteries every month.</p>
+                </div>
 
-            <div class="command-card">
-                <h2>Personnel Management</h2>
-                <table style="width: 100%; text-align: left;">
-                    <tr style="color: var(--fenz-yellow); font-size: 0.8rem;">
-                        <th>MEMBER</th>
-                        <th>ROLE</th>
-                        <th>ACTIONS</th>
-                    </tr>
-                    <tr>
-                        <td>Marlin_Mayhem</td>
-                        <td>Station Officer</td>
-                        <td><span style="color: #4ade80; font-size: 0.7rem;">PROMOTE</span></td>
-                    </tr>
-                </table>
-            </div>
+                <div class="fact-card">
+                    <h3>Response Readiness</h3>
+                    <p>Christchurch District maintains high operational readiness. Ensure your gear is checked and stowed correctly before every shift.</p>
+                </div>
 
-            <div class="command-card">
-                <h2>Command Logs</h2>
-                <div class="log-box">
-                    > System Online. Awaiting District Manager Input...
-                </div>
-            </div>
+                <div class="fact-card">
+                    <h3>Escape Plans</h3>
+                    <p>In a fire, you have less than 3 minutes to get out. Always identify two ways out of every room in your station and home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        </div>
-    </section>
+    <script>
+        window.onload = () => {
+            const fragment = new URLSearchParams(window.location.hash.slice(1));
+            const accessToken = fragment.get('access_token');
+
+            if (accessToken) {
+                fetch('https://discord.com/api/users/@me', {
+                    headers: {
+                        authorization: `Bearer ${accessToken}`,
+                    },
+                })
+                .then(result => result.json())
+                .then(response => {
+                    const { username } = response;
+                    if(username) {
+                        // Change Headline to Welcome User
+                        document.getElementById('main-headline').innerHTML = `WELCOME,<br>${username.toUpperCase()}`;
+                        document.getElementById('user-welcome-label').innerText = `AUTHENTICATED: ${username}`;
+                        // Hide login button
+                        document.getElementById('discord-auth-btn').style.display = 'none';
+                    }
+                })
+                .catch(err => console.error("Discord Auth Error:", err));
+            }
+        };
+    </script>
 
 </body>
 </html>
