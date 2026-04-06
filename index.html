@@ -167,6 +167,7 @@
             margin-bottom: 12px;
             transition: 0.3s;
             text-transform: uppercase;
+            cursor: pointer;
         }
 
         .quick-links a:hover {
@@ -179,6 +180,7 @@
         .command-section {
             background-color: #0b111e;
             padding: 60px 4%;
+            display: none; /* Initially Hidden */
         }
 
         .command-grid {
@@ -330,7 +332,7 @@
                 <a href="#">Ranks</a>
                 <a href="roster.html">Station Roster</a>
                 
-                <a href="#command-ops" style="color: var(--fenz-yellow);">Command Operations</a>
+                <a onclick="toggleCommandOps()" style="color: var(--fenz-yellow);">Command Operations</a>
                 
                 <a href="#">Fleet status</a>
                 <a href="#">Contact Admin</a>
@@ -363,7 +365,7 @@
                         </tr>
                     </thead>
                     <tbody id="rosterBody">
-                        </tbody>
+                    </tbody>
                 </table>
             </div>
 
@@ -401,6 +403,19 @@
     </section>
 
     <script>
+        // --- COMMAND SECTION TOGGLE ---
+        function toggleCommandOps() {
+            const section = document.getElementById('command-ops');
+            
+            if (section.style.display === "block") {
+                section.style.display = "none";
+            } else {
+                section.style.display = "block";
+                section.scrollIntoView({ behavior: 'smooth' });
+                addLog("District Manager accessed Command Operations Panel.");
+            }
+        }
+
         // Personnel Logic
         let roster = [];
 
