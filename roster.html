@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Station Roster | Internal Portal</title>
+    <title>Christchurch District Roster | FENZ</title>
     <style>
         :root {
             --fenz-red: #d42027;
@@ -24,14 +24,23 @@
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        .header {
+        /* Logo and Header Styling */
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 25px;
             margin-bottom: 30px;
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 20px;
         }
 
-        h1 { text-transform: uppercase; font-size: 2rem; margin: 10px 0; color: white; }
-        .back-btn { color: var(--fenz-yellow); text-decoration: none; font-weight: bold; font-size: 0.9rem; }
+        .fenz-logo {
+            height: 100px;
+            width: auto;
+        }
+
+        h1 { text-transform: uppercase; font-size: 2rem; margin: 0; color: white; }
+        .back-btn { color: var(--fenz-yellow); text-decoration: none; font-weight: bold; font-size: 0.9rem; display: block; margin-bottom: 15px; }
 
         /* --- TABLE STYLING --- */
         .roster-container {
@@ -53,11 +62,6 @@
             border-bottom: 2px solid var(--border-color);
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
         th {
             background-color: var(--table-header);
             color: #94a3b8;
@@ -71,12 +75,26 @@
         td {
             padding: 15px;
             border-bottom: 1px solid var(--border-color);
-            font-size: 0.95rem;
+            vertical-align: top;
         }
 
         tr:nth-child(even) { background-color: var(--row-alt); }
         tr:nth-child(odd) { background-color: var(--row-bg); }
-        tr:hover { background-color: #24314d; }
+
+        /* Names List Styling */
+        .names-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .names-list li {
+            padding: 2px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .names-list li:last-child { border-bottom: none; }
 
         /* Status Badge */
         .status-badge {
@@ -88,19 +106,10 @@
             font-weight: bold;
             text-transform: uppercase;
             border: 1px solid var(--active-green);
-            display: inline-block;
         }
 
-        .status-off {
-            background: rgba(148, 163, 184, 0.1);
-            color: #94a3b8;
-            border: 1px solid #475569;
-        }
-
-        /* Rank Text Styling */
-        .rank-cell { font-weight: 600; color: #fff; }
-        .name-cell { color: #94a3b8; font-style: italic; }
-        .callsign-cell { font-family: monospace; color: var(--fenz-yellow); font-weight: bold; }
+        .rank-cell { font-weight: 600; color: #94a3b8; text-transform: uppercase; font-size: 0.85rem; }
+        .na-text { color: #475569; font-family: monospace; }
 
     </style>
 </head>
@@ -108,82 +117,115 @@
 
     <a href="index.html" class="back-btn">← BACK TO DASHBOARD</a>
     
-    <div class="header">
-        <h1>Operational Roster</h1>
-        <p style="color: #64748b;">Auckland Central Station | Fire and Emergency NZ</p>
+    <div class="header-container">
+        <img src="https://raw.githubusercontent.com/marlin677/marlin77.github.io/main/FIRE%20AND%20EMERGENCY%20LOGO%201.png" alt="Fire and Emergency NZ" class="fenz-logo">
+        <div>
+            <h1>Christchurch District Roster</h1>
+            <p style="color: #64748b; margin: 5px 0 0 0;">Fire and Emergency New Zealand | Operational Strength</p>
+        </div>
     </div>
 
     <table class="roster-container">
         <thead>
+            <tr><th colspan="4" class="category-header">Command Staff</th></tr>
             <tr>
-                <th colspan="5" class="category-header">Command Staff</th>
-            </tr>
-            <tr>
-                <th>Personnel Name</th>
-                <th>Rank</th>
-                <th>Callsign</th>
-                <th>Status</th>
-                <th>Employee ID</th>
+                <th width="35%">Personnel Name</th>
+                <th width="25%">Rank</th>
+                <th width="20%">Status</th>
+                <th width="20%">Callsign</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td class="name-cell">VACANT</td>
+                <td><ul class="names-list"><li>Ben Lewis</li></ul></td>
                 <td class="rank-cell">District Manager</td>
-                <td class="callsign-cell">DIST1</td>
-                <td><span class="status-badge status-off">Off Duty</span></td>
-                <td>N/A</td>
+                <td><span class="status-badge">Active</span></td>
+                <td class="na-text">N/A</td>
             </tr>
             <tr>
-                <td class="name-cell">VACANT</td>
+                <td><ul class="names-list"><li>Ethan Brown</li></ul></td>
                 <td class="rank-cell">Group Manager</td>
-                <td class="callsign-cell">GRP1</td>
-                <td><span class="status-badge status-off">Off Duty</span></td>
-                <td>N/A</td>
+                <td><span class="status-badge">Active</span></td>
+                <td class="na-text">N/A</td>
             </tr>
         </tbody>
 
         <thead>
-            <tr>
-                <th colspan="5" class="category-header">Station Officers</th>
-            </tr>
+            <tr><th colspan="4" class="category-header">Station Officers</th></tr>
         </thead>
         <tbody>
             <tr>
-                <td class="name-cell">Awaiting Assignment</td>
+                <td><ul class="names-list"><li>Craig Blippy</li></ul></td>
                 <td class="rank-cell">Senior Station Officer</td>
-                <td class="callsign-cell">SSO1</td>
                 <td><span class="status-badge">Active</span></td>
-                <td>000-000</td>
+                <td class="na-text">N/A</td>
             </tr>
             <tr>
-                <td class="name-cell">Awaiting Assignment</td>
+                <td><ul class="names-list"><li>Kieran Striker</li></ul></td>
                 <td class="rank-cell">Station Officer</td>
-                <td class="callsign-cell">SO1</td>
                 <td><span class="status-badge">Active</span></td>
-                <td>000-000</td>
+                <td class="na-text">N/A</td>
+            </tr>
+            <tr>
+                <td><ul class="names-list"><li>Voqqhe</li></ul></td>
+                <td class="rank-cell">Acting Station Officer</td>
+                <td><span class="status-badge">Active</span></td>
+                <td class="na-text">N/A</td>
             </tr>
         </tbody>
 
         <thead>
-            <tr>
-                <th colspan="5" class="category-header">Operational Personnel</th>
-            </tr>
+            <tr><th colspan="4" class="category-header">Firefighter Personnel</th></tr>
         </thead>
         <tbody>
             <tr>
-                <td class="name-cell">Awaiting Assignment</td>
+                <td>
+                    <ul class="names-list">
+                        <li>C. Tay</li>
+                        <li>Tom98562</li>
+                        <li>huso</li>
+                    </ul>
+                </td>
                 <td class="rank-cell">Senior Firefighter</td>
-                <td class="callsign-cell">SFF1</td>
                 <td><span class="status-badge">Active</span></td>
-                <td>000-000</td>
+                <td class="na-text">N/A</td>
             </tr>
             <tr>
-                <td class="name-cell">Awaiting Assignment</td>
+                <td>
+                    <ul class="names-list">
+                        <li>Steven Manning</li>
+                        <li>CHASEP21</li>
+                        <li>Kiwi</li>
+                        <li>Ari Poriki</li>
+                    </ul>
+                </td>
                 <td class="rank-cell">Qualified Firefighter</td>
-                <td class="callsign-cell">QFF1</td>
                 <td><span class="status-badge">Active</span></td>
-                <td>000-000</td>
+                <td class="na-text">N/A</td>
+            </tr>
+            <tr>
+                <td class="na-text">N/A</td>
+                <td class="rank-cell">Firefighter</td>
+                <td><span class="status-badge">Active</span></td>
+                <td class="na-text">N/A</td>
+            </tr>
+            <tr>
+                <td class="na-text">N/A</td>
+                <td class="rank-cell">Recruit Firefighter</td>
+                <td><span class="status-badge">Active</span></td>
+                <td class="na-text">N/A</td>
+            </tr>
+        </tbody>
+
+        <thead>
+            <tr><th colspan="4" class="category-header">Volunteer Firefighters</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="na-text">N/A</td>
+                <td class="rank-cell">Volunteer Personnel</td>
+                <td><span class="status-badge">On Call</span></td>
+                <td class="na-text">N/A</td>
             </tr>
         </tbody>
     </table>
