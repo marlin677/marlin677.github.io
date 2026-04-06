@@ -1,4 +1,3 @@
-<a href="roster.html">Station Roster</a>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,69 +8,100 @@
         :root {
             --fenz-red: #d42027;
             --fenz-yellow: #ffed00;
-            --dark-bg: #1a1a1a;
-            --row-bg: #2a2a2a;
+            --dark-blue: #0b1120;
+            --table-header: #111a2e;
+            --row-bg: #162036;
+            --row-alt: #1a253d;
+            --border-color: #2d3a54;
+            --active-green: #22c55e;
         }
 
         body {
             margin: 0;
             padding: 40px;
-            background-color: var(--dark-bg);
-            color: white;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--dark-blue);
+            color: #e2e8f0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         .header {
-            border-left: 10px solid var(--fenz-red);
-            padding-left: 20px;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
         }
 
-        h1 { text-transform: uppercase; font-size: 3rem; margin: 0; }
-        .back-btn { color: var(--fenz-yellow); text-decoration: none; font-weight: bold; }
+        h1 { text-transform: uppercase; font-size: 2rem; margin: 10px 0; color: white; }
+        .back-btn { color: var(--fenz-yellow); text-decoration: none; font-weight: bold; font-size: 0.9rem; }
 
-        /* --- ROSTER TABLE --- */
+        /* --- TABLE STYLING --- */
         .roster-container {
-            max-width: 1000px;
-            margin: 0 auto;
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
         }
 
-        .rank-group {
-            background: var(--row-bg);
-            margin-bottom: 15px;
-            padding: 20px;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-right: 5px solid transparent;
-            transition: 0.3s;
-        }
-
-        /* Color coding by authority */
-        .rank-group.management { border-right-color: var(--fenz-yellow); }
-        .rank-group.officer { border-right-color: var(--fenz-red); }
-        .rank-group.firefighter { border-right-color: #888; }
-
-        .rank-name {
-            font-weight: 900;
+        .category-header {
+            background-color: var(--table-header);
+            color: white;
+            text-align: center;
             text-transform: uppercase;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            padding: 12px;
+            font-size: 0.9rem;
+            border-bottom: 2px solid var(--border-color);
         }
 
-        .personnel-name {
-            color: #bbb;
-            font-style: italic;
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
+        th {
+            background-color: var(--table-header);
+            color: #94a3b8;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        tr:nth-child(even) { background-color: var(--row-alt); }
+        tr:nth-child(odd) { background-color: var(--row-bg); }
+        tr:hover { background-color: #24314d; }
+
+        /* Status Badge */
         .status-badge {
-            background: #444;
-            padding: 5px 15px;
-            font-size: 0.8rem;
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--active-green);
+            padding: 4px 12px;
             border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
             text-transform: uppercase;
+            border: 1px solid var(--active-green);
+            display: inline-block;
         }
+
+        .status-off {
+            background: rgba(148, 163, 184, 0.1);
+            color: #94a3b8;
+            border: 1px solid #475569;
+        }
+
+        /* Rank Text Styling */
+        .rank-cell { font-weight: 600; color: #fff; }
+        .name-cell { color: #94a3b8; font-style: italic; }
+        .callsign-cell { font-family: monospace; color: var(--fenz-yellow); font-weight: bold; }
+
     </style>
 </head>
 <body>
@@ -79,61 +109,84 @@
     <a href="index.html" class="back-btn">← BACK TO DASHBOARD</a>
     
     <div class="header">
-        <h1>Station Roster</h1>
-        <p>Operational Strength - Auckland Central</p>
+        <h1>Operational Roster</h1>
+        <p style="color: #64748b;">Auckland Central Station | Fire and Emergency NZ</p>
     </div>
 
-    <div class="roster-container">
-        
-        <div class="rank-group management">
-            <div class="rank-name">District Manager</div>
-            <div class="personnel-name">VACANT</div>
-            <div class="status-badge">Off Duty</div>
-        </div>
+    <table class="roster-container">
+        <thead>
+            <tr>
+                <th colspan="5" class="category-header">Command Staff</th>
+            </tr>
+            <tr>
+                <th>Personnel Name</th>
+                <th>Rank</th>
+                <th>Callsign</th>
+                <th>Status</th>
+                <th>Employee ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="name-cell">VACANT</td>
+                <td class="rank-cell">District Manager</td>
+                <td class="callsign-cell">DIST1</td>
+                <td><span class="status-badge status-off">Off Duty</span></td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td class="name-cell">VACANT</td>
+                <td class="rank-cell">Group Manager</td>
+                <td class="callsign-cell">GRP1</td>
+                <td><span class="status-badge status-off">Off Duty</span></td>
+                <td>N/A</td>
+            </tr>
+        </tbody>
 
-        <div class="rank-group management">
-            <div class="rank-name">Group Manager</div>
-            <div class="personnel-name">VACANT</div>
-            <div class="status-badge">Off Duty</div>
-        </div>
+        <thead>
+            <tr>
+                <th colspan="5" class="category-header">Station Officers</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="name-cell">Awaiting Assignment</td>
+                <td class="rank-cell">Senior Station Officer</td>
+                <td class="callsign-cell">SSO1</td>
+                <td><span class="status-badge">Active</span></td>
+                <td>000-000</td>
+            </tr>
+            <tr>
+                <td class="name-cell">Awaiting Assignment</td>
+                <td class="rank-cell">Station Officer</td>
+                <td class="callsign-cell">SO1</td>
+                <td><span class="status-badge">Active</span></td>
+                <td>000-000</td>
+            </tr>
+        </tbody>
 
-        <div class="rank-group officer">
-            <div class="rank-name">Senior Station Officer</div>
-            <div class="personnel-name">Awaiting Assignment</div>
-            <div class="status-badge">On Call</div>
-        </div>
-
-        <div class="rank-group officer">
-            <div class="rank-name">Acting Senior Station Officer</div>
-            <div class="personnel-name">Awaiting Assignment</div>
-            <div class="status-badge">Active</div>
-        </div>
-
-        <div class="rank-group officer">
-            <div class="rank-name">Station Officer</div>
-            <div class="personnel-name">Awaiting Assignment</div>
-            <div class="status-badge">Active</div>
-        </div>
-
-        <div class="rank-group officer">
-            <div class="rank-name">Acting Station Officer</div>
-            <div class="personnel-name">Awaiting Assignment</div>
-            <div class="status-badge">Active</div>
-        </div>
-
-        <div class="rank-group firefighter">
-            <div class="rank-name">Senior Firefighter</div>
-            <div class="personnel-name">Awaiting Assignment</div>
-            <div class="status-badge">Active</div>
-        </div>
-
-        <div class="rank-group firefighter">
-            <div class="rank-name">Qualified Firefighter</div>
-            <div class="personnel-name">Awaiting Assignment</div>
-            <div class="status-badge">Active</div>
-        </div>
-
-    </div>
+        <thead>
+            <tr>
+                <th colspan="5" class="category-header">Operational Personnel</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="name-cell">Awaiting Assignment</td>
+                <td class="rank-cell">Senior Firefighter</td>
+                <td class="callsign-cell">SFF1</td>
+                <td><span class="status-badge">Active</span></td>
+                <td>000-000</td>
+            </tr>
+            <tr>
+                <td class="name-cell">Awaiting Assignment</td>
+                <td class="rank-cell">Qualified Firefighter</td>
+                <td class="callsign-cell">QFF1</td>
+                <td><span class="status-badge">Active</span></td>
+                <td>000-000</td>
+            </tr>
+        </tbody>
+    </table>
 
 </body>
 </html>
