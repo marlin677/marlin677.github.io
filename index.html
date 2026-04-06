@@ -8,110 +8,202 @@
         :root {
             --fenz-red: #d42027;
             --fenz-yellow: #ffed00;
-            --dark-bg: #05080f; /* Match your screenshots */
-            --slate-bg: #0f172a;
+            --dark-bg: #05080f; /* Darker background from your screenshot */
+            --card-bg: #0f172a;
+            --discord-blurple: #5865F2;
         }
 
-        body {
+        * { box-sizing: border-box; }
+
+        body, html {
             margin: 0;
+            padding: 0;
             background-color: var(--dark-bg);
             color: white;
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- HEADER --- */
         .header-main {
+            position: absolute;
+            top: 0;
+            width: 100%;
             display: flex;
             justify-content: space-between;
-            padding: 20px 5%;
-            background: rgba(0,0,0,0.8);
+            padding: 20px 4%;
+            z-index: 100;
+        }
+
+        .logo-box img {
+            width: 300px;
+            filter: drop-shadow(2px 2px 10px rgba(0,0,0,0.5));
         }
 
         .emergency-number {
-            color: var(--fenz-yellow);
             font-size: 2rem;
+            color: var(--fenz-yellow);
             font-weight: 900;
+            text-align: right;
         }
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://www.fireandemergency.nz/assets/Uploads/FENZ-House_Burn_Levin-Hass_0084.jpg');
-            background-size: cover;
+            height: 100vh;
             display: flex;
             align-items: center;
-            padding: 0 5%;
+            justify-content: center;
+            /* Placeholder background if the FENZ one fails */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://www.fireandemergency.nz/assets/Uploads/FENZ-House_Burn_Levin-Hass_0084.jpg') center/cover;
         }
 
-        .hero-content { border-left: 4px solid var(--fenz-red); padding-left: 20px; }
-        
-        .hero h1 { font-size: 4rem; line-height: 0.9; margin: 10px 0; }
+        .hero-container {
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        /* --- LINKS --- */
-        .menu-links a {
+        .hero-text h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            line-height: 0.9;
+            margin: 0;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .btn-discord {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: var(--discord-blurple);
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        /* --- MENU --- */
+        .quick-links {
+            border-left: 3px solid var(--fenz-red);
+            padding-left: 25px;
+        }
+
+        .quick-links a {
             display: block;
             color: white;
             text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 10px 0;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
             text-transform: uppercase;
         }
-        .menu-links a:hover { color: var(--fenz-yellow); }
 
-        /* --- INFO CARDS --- */
-        .facts-grid {
+        .quick-links a:hover { color: var(--fenz-yellow); }
+
+        /* --- COMMAND OPERATIONS (From your screenshots) --- */
+        .command-section {
+            padding: 60px 4%;
+            background: #05080f;
+            border-top: 2px solid #1e293b;
+        }
+
+        .command-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 20px;
-            padding: 40px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .fact-card {
-            background: var(--slate-bg);
-            padding: 20px;
-            border-top: 4px solid var(--fenz-red);
+        .command-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-top: 3px solid var(--fenz-red);
+            border-radius: 4px;
         }
 
-        .fact-card h3 { color: var(--fenz-yellow); text-transform: uppercase; }
+        .command-card h2 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .log-box {
+            background: #020617;
+            padding: 15px;
+            font-family: monospace;
+            color: #38bdf8;
+            height: 200px;
+            overflow-y: auto;
+        }
     </style>
 </head>
 <body>
 
     <header class="header-main">
-        <div class="logo">
-            <img src="https://raw.githubusercontent.com/marlin677/marlin77.github.io/main/FIRE%20AND%20EMERGENCY%20LOGO%201.png" width="250">
+        <div class="logo-box">
+            <img src="https://raw.githubusercontent.com/marlin677/marlin77.github.io/main/FIRE%20AND%20EMERGENCY%20LOGO%201.png" alt="FENZ">
         </div>
-        <div class="emergency">
-            <div style="font-size: 0.8rem; text-transform: uppercase;">In Emergencies</div>
-            <div class="emergency-number">Call 111</div>
-        </div>
+        <div class="emergency-number">CALL 111</div>
     </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <div style="color: var(--fenz-yellow); font-weight: bold;">INTERNAL PORTAL</div>
-            <h1>LIVES<br>DEPEND<br>ON IT.</h1>
-            
-            <nav class="menu-links">
-                <a href="#">District Leadership</a>
-                <a href="#">Ranks</a>
+        <div class="hero-container">
+            <div class="hero-text">
+                <p style="color: var(--fenz-yellow); font-weight: bold;">INTERNAL PORTAL</p>
+                <h1>LIVES<br>DEPEND<br>ON IT.</h1>
+                <a href="#" class="btn-discord">Login via Discord</a>
+            </div>
+
+            <nav class="quick-links">
                 <a href="#">Station Roster</a>
-                <a href="#" style="color: var(--fenz-yellow);">Leadership Login</a>
-                <a href="#">Fleet status</a>
+                <a href="#command-ops" style="color: var(--fenz-yellow);">Command Operations</a>
+                <a href="#">Fleet Status</a>
             </nav>
         </div>
     </section>
 
-    <section class="facts-grid">
-        <div class="fact-card">
-            <h3>Smoke Alarm Tip</h3>
-            <p>You need a working smoke alarm in every bedroom, living area, and hallway. Check your batteries every month.</p>
-        </div>
-        <div class="fact-card">
-            <h3>Response Readiness</h3>
-            <p>Christchurch District maintains high operational readiness. Ensure your gear is checked and stowed correctly.</p>
+    <section id="command-ops" class="command-section">
+        <h2 style="margin-left: 5%; margin-bottom: 20px;">Command Operations</h2>
+        <div class="command-grid">
+            
+            <div class="command-card">
+                <h2>District Overview</h2>
+                <p>Active Stations: 1 (Auckland Central)</p>
+                <button style="background: #22c55e; color: white; border: none; padding: 10px;">Manage Personnel</button>
+            </div>
+
+            <div class="command-card">
+                <h2>Fleet Management</h2>
+                <p>Status: <span style="color: #4ade80;">Operational</span></p>
+                <button style="background: #ef4444; color: white; border: none; padding: 10px;">Set Emergency Alert</button>
+            </div>
+
+            <div class="command-card">
+                <h2>Personnel Management</h2>
+                <table style="width: 100%; text-align: left;">
+                    <tr style="color: var(--fenz-yellow); font-size: 0.8rem;">
+                        <th>MEMBER</th>
+                        <th>ROLE</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                    <tr>
+                        <td>Marlin_Mayhem</td>
+                        <td>Station Officer</td>
+                        <td><span style="color: #4ade80; font-size: 0.7rem;">PROMOTE</span></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="command-card">
+                <h2>Command Logs</h2>
+                <div class="log-box">
+                    > System Online. Awaiting District Manager Input...
+                </div>
+            </div>
+
         </div>
     </section>
 
