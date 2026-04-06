@@ -8,9 +8,8 @@
         :root {
             --fenz-red: #d42027;
             --fenz-yellow: #ffed00;
-            --dark-bg: #1a1a1a;
+            --dark-bg: #05080f;
             --slate-bg: #111a2e;
-            --discord-blurple: #5865F2;
         }
 
         * { box-sizing: border-box; }
@@ -21,9 +20,7 @@
             background-color: var(--dark-bg);
             color: white;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            scroll-behavior: smooth;
             overflow-x: hidden;
-            width: 100%;
         }
 
         /* --- HEADER & LOGO --- */
@@ -33,80 +30,68 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            padding: 20px 4%;
+            padding: 30px 5%;
             z-index: 100;
         }
 
-        .logo-box {
-            width: 350px; 
-            display: flex;
-            align-items: center;
-        }
-
         .logo-box img {
-            width: 100%; 
-            height: auto;
-            filter: drop-shadow(2px 2px 10px rgba(0,0,0,0.5));
-        }
-
-        .emergency-contact {
-            text-align: right;
-            line-height: 1.1;
-            padding-top: 10px;
-        }
-
-        .emergency-label {
-            font-size: 0.8rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            color: white;
-            text-transform: uppercase;
+            width: 280px;
+            filter: drop-shadow(2px 2px 10px rgba(0,0,0,0.8));
         }
 
         .emergency-number {
+            text-align: right;
+            line-height: 1;
+        }
+
+        .emergency-number span {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .emergency-number strong {
             font-size: 2.2rem;
             color: var(--fenz-yellow);
-            font-weight: 900;
         }
 
         /* --- HERO SECTION --- */
         .hero {
             position: relative;
             height: 100vh;
-            min-height: 700px;
             display: flex;
             align-items: center;
             justify-content: center;
-            /* FIX: Added fallback color #1a1a1a in case image fails */
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        #1a1a1a url('https://www.fireandemergency.nz/assets/Uploads/FENZ-House_Burn_Levin-Hass_0084.jpg');
+            /* Using the FENZ image from your screenshot with a heavy dark overlay */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                        url('https://www.fireandemergency.nz/assets/Uploads/FENZ-House_Burn_Levin-Hass_0084.jpg');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
         }
 
         .hero-container {
-            width: 92%;
-            max-width: 1600px;
+            width: 90%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 50px;
-        }
-
-        .hero-text {
-            max-width: 600px;
         }
 
         .hero-text h1 {
-            font-size: clamp(3.5rem, 9vw, 6rem);
-            line-height: 0.9;
+            font-size: 6rem;
+            line-height: 0.85;
             margin: 0;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: -2px;
-            color: white;
+            letter-spacing: -3px;
+        }
+
+        .hero-text p {
+            color: var(--fenz-yellow);
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
         }
 
         .btn-safety {
@@ -114,105 +99,65 @@
             margin-top: 30px;
             background-color: var(--fenz-yellow);
             color: black;
-            padding: 15px 35px;
+            padding: 12px 25px;
             font-weight: 900;
             text-decoration: none;
             text-transform: uppercase;
-            transition: 0.2s;
-            font-size: 1.1rem;
-            border: none;
-            cursor: pointer;
+            font-size: 0.9rem;
         }
 
-        .btn-discord {
-            display: inline-block;
-            margin-top: 30px;
-            margin-left: 15px;
-            background-color: var(--discord-blurple);
-            color: white;
-            padding: 15px 25px;
-            font-weight: bold;
-            text-decoration: none;
-            text-transform: uppercase;
-            transition: 0.2s;
-            font-size: 1rem;
-            border-radius: 4px;
-        }
-
-        .btn-safety:hover, .btn-discord:hover {
-            background-color: white;
-            color: black;
-            transform: scale(1.05);
-        }
-
-        /* --- MENU SECTION --- */
+        /* --- MAIN MENU (Right Side) --- */
         .quick-links {
-            text-align: left;
             border-left: 3px solid var(--fenz-red);
             padding-left: 30px;
         }
 
-        .menu-title {
-            color: var(--fenz-yellow);
-            font-size: 0.85rem;
+        .menu-label {
+            font-size: 0.7rem;
+            color: white;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            font-weight: 900;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
         }
 
         .quick-links a {
             display: block;
             color: white;
             text-decoration: none;
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            transition: 0.3s;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
             text-transform: uppercase;
+            transition: 0.2s;
         }
 
         .quick-links a:hover {
             color: var(--fenz-yellow);
-            padding-left: 15px;
-            border-left: 4px solid var(--fenz-yellow);
+            transform: translateX(10px);
         }
 
-        /* --- FACTS SECTION --- */
+        .active-link {
+            color: var(--fenz-yellow) !important;
+        }
+
+        /* --- LOWER CONTENT --- */
         .facts-section {
             background-color: var(--slate-bg);
-            padding: 80px 4%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .facts-container {
-            max-width: 1200px;
-            width: 100%;
+            padding: 60px 5%;
         }
 
         .facts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            gap: 20px;
+            margin-top: 30px;
         }
 
         .fact-card {
-            background: rgba(255,255,255,0.05);
-            padding: 30px;
+            background: rgba(255,255,255,0.03);
+            padding: 25px;
             border-top: 4px solid var(--fenz-red);
-        }
-
-        .fact-card h3 {
-            color: var(--fenz-yellow);
-            text-transform: uppercase;
-            margin-top: 0;
-        }
-
-        .fact-card p {
-            line-height: 1.6;
-            color: #cbd5e1;
         }
     </style>
 </head>
@@ -220,60 +165,45 @@
 
     <header class="header-main">
         <div class="logo-box">
-            <img src="https://raw.githubusercontent.com/marlin677/marlin77.github.io/main/FIRE%20AND%20EMERGENCY%20LOGO%201.png" alt="Fire and Emergency NZ">
+            <img src="https://raw.githubusercontent.com/marlin677/marlin77.github.io/main/FIRE%20AND%20EMERGENCY%20LOGO%201.png" alt="FENZ">
         </div>
-
-        <div class="emergency-contact">
-            <div class="emergency-label">In Emergencies</div>
-            <div class="emergency-number">Call 111</div>
+        <div class="emergency-number">
+            <span>In Emergencies</span>
+            <strong>Call 111</strong>
         </div>
     </header>
 
     <section class="hero">
         <div class="hero-container">
             <div class="hero-text">
-                <p id="user-welcome-label" style="color: var(--fenz-yellow); font-weight: bold; text-transform: uppercase; margin-bottom: 10px;">Internal Portal</p>
-                <h1 id="main-headline">LIVES<br>DEPEND<br>ON IT.</h1>
-                
-                <a href="#safety-facts" class="btn-safety">Smoke Alarms Save Lives</a>
-                
-                <a href="#" class="btn-discord" id="discord-auth-btn">
-                    <img src="https://cdn.prod.website-files.com/6257adef93867e3d8405e367/6257adef93867e059105e612_9850_Discord_Logo_White.png" width="20" style="margin-right: 10px; vertical-align: middle;">
-                    Login via Discord
-                </a>
+                <p>Internal Portal</p>
+                <h1>Lives<br>Depend<br>On It.</h1>
+                <a href="#facts" class="btn-safety">Smoke Alarms Save Lives</a>
             </div>
 
             <nav class="quick-links">
-                <div class="menu-title">Main Menu</div>
+                <span class="menu-label">Main Menu</span>
                 <a href="#">District Leadership</a>
                 <a href="#">Ranks</a>
                 <a href="#">Station Roster</a>
-                <a href="#" style="color: var(--fenz-yellow);">Leadership Login</a>
-                <a href="#">Fleet status</a>
+                <a href="#">My Profile</a>
+                <a href="#" class="active-link">Command Operations</a>
+                <a href="#">Fleet Status</a>
                 <a href="#">Contact Admin</a>
             </nav>
         </div>
     </section>
 
-    <section id="safety-facts" class="facts-section">
-        <div class="facts-container">
-            <h2 style="font-size: 2.5rem; text-transform: uppercase; border-left: 8px solid var(--fenz-red); padding-left: 20px;">Safety & District Facts</h2>
-            
-            <div class="facts-grid">
-                <div class="fact-card">
-                    <h3>Smoke Alarm Tip</h3>
-                    <p>You need a working smoke alarm in every bedroom, living area, and hallway. Check your batteries every month.</p>
-                </div>
-
-                <div class="fact-card">
-                    <h3>Response Readiness</h3>
-                    <p>Christchurch District maintains high operational readiness. Ensure your gear is checked and stowed correctly before every shift.</p>
-                </div>
-
-                <div class="fact-card">
-                    <h3>Escape Plans</h3>
-                    <p>In a fire, you have less than 3 minutes to get out. Always identify two ways out of every room in your station and home.</p>
-                </div>
+    <section id="facts" class="facts-section">
+        <h2 style="text-transform: uppercase; border-left: 10px solid var(--fenz-red); padding-left: 20px;">Safety & District Facts</h2>
+        <div class="facts-grid">
+            <div class="fact-card">
+                <h3 style="color: var(--fenz-yellow);">Smoke Alarm Tip</h3>
+                <p>You need a working smoke alarm in every bedroom, living area, and hallway. Check your batteries every month.</p>
+            </div>
+            <div class="fact-card">
+                <h3 style="color: var(--fenz-yellow);">Response Readiness</h3>
+                <p>Christchurch District maintains high operational readiness. Ensure your gear is checked and stowed correctly before every shift.</p>
             </div>
         </div>
     </section>
