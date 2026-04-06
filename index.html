@@ -10,6 +10,7 @@
             --fenz-yellow: #ffed00;
             --dark-bg: #1a1a1a;
             --slate-bg: #111a2e;
+            --card-bg: #1c263d;
             --discord-blurple: #5865F2;
         }
 
@@ -174,6 +175,90 @@
             border-left: 4px solid var(--fenz-yellow);
         }
 
+        /* --- COMMAND OPERATIONS SECTION --- */
+        .command-section {
+            background-color: #0b111e;
+            padding: 60px 4%;
+        }
+
+        .command-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .command-card {
+            background: var(--card-bg);
+            border-radius: 4px;
+            padding: 25px;
+            border-top: 3px solid var(--fenz-red);
+        }
+
+        .command-card h2 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        .input-group {
+            margin: 15px 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        input, select {
+            background: #0b111e;
+            border: 1px solid #444;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .btn-action {
+            background: var(--fenz-red);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .roster-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .roster-table th {
+            text-align: left;
+            font-size: 0.8rem;
+            color: var(--fenz-yellow);
+            text-transform: uppercase;
+            padding-bottom: 10px;
+        }
+
+        .roster-table td {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .log-container {
+            background: #0b111e;
+            height: 250px;
+            overflow-y: auto;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border-radius: 4px;
+        }
+
+        .log-entry { margin-bottom: 5px; color: #a5b4fc; }
+
         /* --- FACTS SECTION --- */
         .facts-section {
             background-color: var(--slate-bg);
@@ -245,11 +330,50 @@
                 <a href="#">Ranks</a>
                 <a href="roster.html">Station Roster</a>
                 
-                <a href="commander-login.html" style="color: var(--fenz-yellow);">Leadership Login</a>
+                <a href="#command-ops" style="color: var(--fenz-yellow);">Command Operations</a>
                 
                 <a href="#">Fleet status</a>
                 <a href="#">Contact Admin</a>
             </nav>
+        </div>
+    </section>
+
+    <section id="command-ops" class="command-section">
+        <div class="command-grid">
+            
+            <div class="command-card">
+                <h2>Personnel Management</h2>
+                <div class="input-group">
+                    <input type="text" id="newMemberName" placeholder="Full Name" style="flex:2;">
+                    <select id="newMemberRole" style="flex:1;">
+                        <option value="Recruit">Recruit</option>
+                        <option value="Firefighter">Firefighter</option>
+                        <option value="Senior FF">Senior FF</option>
+                        <option value="Station Officer">Station Officer</option>
+                    </select>
+                    <button class="btn-action" onclick="addRosterMember()">Add</button>
+                </div>
+
+                <table class="roster-table">
+                    <thead>
+                        <tr>
+                            <th>Member Name</th>
+                            <th>Current Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rosterBody">
+                        </tbody>
+                </table>
+            </div>
+
+            <div class="command-card">
+                <h2>Command Logs (Promotions/Demotions)</h2>
+                <div class="log-container" id="commandLogs">
+                    <div class="log-entry">> System Online. Awaiting District Manager Input...</div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -277,6 +401,50 @@
     </section>
 
     <script>
+        // Personnel Logic
+        let roster = [];
+
+        function addRosterMember() {
+            const name = document.getElementById('newMemberName').value;
+            const role = document.getElementById('newMemberRole').value;
+
+            if (!name) return alert("Please enter a name.");
+
+            const member = { id: Date.now(), name, role };
+            roster.push(member);
+            updateRosterUI();
+            addLog(`PERSONNEL: ${name} added to roster as ${role}.`);
+            document.getElementById('newMemberName').value = "";
+        }
+
+        function addLog(msg) {
+            const logBox = document.getElementById('commandLogs');
+            const time = new Date().toLocaleTimeString();
+            logBox.innerHTML = `<div class="log-entry">[${time}] ${msg}</div>` + logBox.innerHTML;
+        }
+
+        function updateRosterUI() {
+            const body = document.getElementById('rosterBody');
+            body.innerHTML = "";
+            roster.forEach(m => {
+                body.innerHTML += `
+                    <tr>
+                        <td>${m.name}</td>
+                        <td><strong>${m.role}</strong></td>
+                        <td>
+                            <button onclick="handleAction('${m.name}', 'Promoted')" style="background:none; border:1px solid #28a745; color:#28a745; cursor:pointer; font-size:10px; padding:2px 5px;">PROMOTE</button>
+                            <button onclick="handleAction('${m.name}', 'Demoted')" style="background:none; border:1px solid #d42027; color:#d42027; cursor:pointer; font-size:10px; padding:2px 5px;">DEMOTE</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function handleAction(name, action) {
+            addLog(`COMMAND: ${name} has been ${action} by District Manager.`);
+        }
+
+        // Discord Auth Logic
         window.onload = () => {
             const fragment = new URLSearchParams(window.location.hash.slice(1));
             const accessToken = fragment.get('access_token');
@@ -291,10 +459,8 @@
                 .then(response => {
                     const { username } = response;
                     if(username) {
-                        // Change Headline to Welcome User
                         document.getElementById('main-headline').innerHTML = `WELCOME,<br>${username.toUpperCase()}`;
                         document.getElementById('user-welcome-label').innerText = `AUTHENTICATED: ${username}`;
-                        // Hide login button
                         document.getElementById('discord-auth-btn').style.display = 'none';
                     }
                 })
