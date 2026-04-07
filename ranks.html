@@ -1,1 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rank Structure | FENZ Portal</title>
+    <style>
+        :root {
+            --fenz-red: #d42027;
+            --fenz-yellow: #ffed00;
+            --dark-bg: #1a1a1a;
+            --slate-bg: #111a2e;
+        }
 
+        body {
+            margin: 0;
+            padding: 40px 5%;
+            background-color: var(--dark-bg);
+            color: white;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        .header {
+            border-left: 8px solid var(--fenz-red);
+            padding-left: 20px;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .rank-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .rank-card {
+            background: var(--slate-bg);
+            padding: 25px;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+
+        .rank-card:hover {
+            border-bottom: 3px solid var(--fenz-yellow);
+            background: #16223d;
+        }
+
+        .rank-title {
+            color: var(--fenz-yellow);
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .officer-name {
+            font-size: 0.8rem;
+            background: var(--fenz-red);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
+
+        .rank-desc {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #cbd5e1;
+        }
+
+        .divider {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px 0;
+            position: relative;
+        }
+
+        .divider hr {
+            border: 0;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .divider span {
+            background: var(--dark-bg);
+            padding: 0 20px;
+            position: relative;
+            top: -12px;
+            font-weight: 900;
+            color: var(--fenz-red);
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <p style="color: var(--fenz-yellow); font-weight: bold; margin-bottom: 5px;">INTERNAL DOCUMENT 04-A</p>
+        <h1>Rank Structure & Duties</h1>
+    </div>
+
+    <div class="rank-grid">
+        <div class="rank-card">
+            <div class="rank-title">National Fire Commander</div>
+            <p class="rank-desc">Oversees all operations across the country. Responsible for national strategy, government relations, and ultimate department accountability.</p>
+        </div>
+
+        <div class="rank-card">
+            <div class="rank-title">Assistant National Fire Commander</div>
+            <p class="rank-desc">Supports the National Commander in daily operations and assumes command of major large-scale national emergencies.</p>
+        </div>
+
+        <div class="rank-card">
+            <div class="rank-title">District Manager <span class="officer-name">Ben Lewis</span></div>
+            <p class="rank-desc">Responsible for the strategic management of the Christchurch District, ensuring resource allocation and personnel welfare.</p>
+        </div>
+
+        <div class="rank-card">
+            <div class="rank-title">Group Manager <span class="officer-name">Ethan Brown</span></div>
+            <p class="rank-desc">Coordinates multiple stations within a designated group, bridging the gap between local stations and district leadership.</p>
+        </div>
+
+        <div class="rank-card">
+            <div class="rank-title">Senior Station Officer (SSO)</div>
+            <p class="rank-desc">The ranking officer on shift. Manages station administration and acts as the Incident Controller (IC) at significant callouts.</p>
+        </div>
+
+        <div class="rank-card">
+            <div class="rank-title">Station Officer (SO)</div>
+            <p class="rank-desc">Commands a single appliance and crew. Responsible for the safety, training, and tactical deployment of their firefighters.</p>
+        </div>
+
+        <div class="rank-card">
+            <div class="rank-title">Senior Firefighter</div>
+            <p class="rank-desc">Highly experienced frontline personnel who provide mentorship to junior staff and lead specific tactical tasks on-scene.</p>
+        </div>
+
+        <div class="rank-card">
+            <div class="rank-title">Qualified Firefighter</div>
+            <p class="rank-desc">Full-time personnel who have completed all core competencies and are authorized to operate advanced equipment.</p>
+        </div>
+
+        <div class="rank-card">
+            <div class="rank-title">Firefighter</div>
+            <p class="rank-desc">Personnel currently in the development phase, working under supervision to master firefighting and rescue techniques.</p>
+        </div>
+
+        <div class="rank-card">
+            <div class="rank-title">Volunteer Firefighter</div>
+            <p class="rank-desc">Community-based responders who provide vital emergency services. They maintain the same standards of training as career staff.</p>
+        </div>
+
+        <div class="rank-card">
+            <div class="rank-title">Ops Support Volunteer</div>
+            <p class="rank-desc">Provides non-firefighting support including traffic control, lighting, and logistics to ensure scene safety and efficiency.</p>
+        </div>
+
+        <div class="divider">
+            <hr>
+            <span>EXCLUSIVE RANKS</span>
+        </div>
+
+        <div class="rank-card">
+            <div class="rank-title">Chief Fire Officer (CFO)</div>
+            <p class="rank-desc">The highest-ranking officer within a specific volunteer brigade. Holds ultimate responsibility for the brigade's performance and personnel.</p>
+        </div>
+
+        <div class="rank-card">
+            <div class="rank-title">Deputy Chief Fire Officer (DCFO)</div>
+            <p class="rank-desc">Second-in-command of a volunteer brigade. Manages training schedules and assists the CFO in operational leadership.</p>
+        </div>
+
+    </div>
+
+    <div style="margin-top: 50px; text-align: center;">
+        <a href="index.html" style="color: white; text-decoration: none; font-weight: bold; border: 1px solid white; padding: 10px 20px;">BACK TO PORTAL</a>
+    </div>
+
+</body>
+</html>
