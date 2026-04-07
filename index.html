@@ -131,7 +131,7 @@
             text-decoration: none;
             text-transform: uppercase;
             transition: 0.2s;
-            font-size: 1rem;
+            font-size: 1.1rem;
             border-radius: 4px;
         }
 
@@ -242,7 +242,9 @@
             <nav class="quick-links">
                 <div class="menu-title">Main Menu</div>
                 <a href="leadership.html">District Leadership</a>
-                <a href="#">Ranks</a>
+                
+                <a href="ranks.html">Ranks</a> 
+                
                 <a href="roster.html">National Roster</a>
                 
                 <a href="commander-login.html" style="color: var(--fenz-yellow);">Leadership Login</a>
@@ -291,10 +293,8 @@
                 .then(response => {
                     const { username } = response;
                     if(username) {
-                        // Change Headline to Welcome User
                         document.getElementById('main-headline').innerHTML = `WELCOME,<br>${username.toUpperCase()}`;
                         document.getElementById('user-welcome-label').innerText = `AUTHENTICATED: ${username}`;
-                        // Hide login button
                         document.getElementById('discord-auth-btn').style.display = 'none';
                     }
                 })
