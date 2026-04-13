@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Department Portal | FENZ Style</title>
+    
+    <title>Internal Portal | FENZ</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/marlin677/marlin77.github.io/main/FIRE%20AND%20EMERGENCY%20LOGO%201.png">
+
     <style>
         :root {
             --fenz-red: #d42027;
@@ -22,6 +25,22 @@
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             scroll-behavior: smooth;
             overflow-x: hidden;
+        }
+
+        /* Anti-Theft Watermark - Updated to Marlin_Mayhem */
+        body::after {
+            content: "Developed by Marlin_Mayhem";
+            position: fixed;
+            bottom: 10px;
+            right: 15px;
+            opacity: 0.25;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            pointer-events: none;
+            z-index: 9999;
+            color: white;
         }
 
         /* --- HEADER & LOGO --- */
@@ -196,8 +215,7 @@
         }
     </style>
 </head>
-<body>
-
+<body onselectstart="return false">
     <header class="header-main">
         <div class="logo-box">
             <img src="https://raw.githubusercontent.com/marlin677/marlin77.github.io/main/FIRE%20AND%20EMERGENCY%20LOGO%201.png" alt="Fire and Emergency NZ">
@@ -241,28 +259,32 @@
 
                 <div class="fact-card">
                     <h3>Response Readiness</h3>
-                    <p>A house fire can become deadly in under 3 minutes Get out, stay out, call 111.</p>
+                    <p>A house fire can become deadly in under 3 minutes. Get out, stay out, call 111.</p>
                 </div>
 
                 <div class="fact-card">
                     <h3>Escape Plans</h3>
-                    <p>In a fire, you have less than 3 minutes to get out. Always identify two ways out of every room in your and home.</p>
+                    <p>In a fire, you have less than 3 minutes to get out. Always identify two ways out of every room in your home.</p>
                 </div>
             </div>
         </div>
     </section>
-<script>
-    // Disable Right-Click
-    document.addEventListener('contextmenu', event => event.preventDefault());
 
-    // Disable F12, Ctrl+Shift+I, Ctrl+U (Common dev tool shortcuts)
-    document.onkeydown = function(e) {
-        if (e.keyCode == 123 || 
-            (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) || 
-            (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
-            return false;
-        }
-    };
-</script>
+    <script>
+        // Disable Right-Click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Disable F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123 || 
+                (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) || 
+                (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) || 
+                (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) || 
+                (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) ||
+                (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0))) {
+                return false;
+            }
+        };
+    </script>
 </body>
 </html>
